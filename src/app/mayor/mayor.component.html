@@ -1,0 +1,90 @@
+
+<!-- get the emisor from chil menor-component
+     and send the variable canal to the menor-component
+     that means as well @Input as  @Output in the same call
+-->
+<app-menor
+    [canal] = "'Mito'"
+    (emisor) = "mostrarImagen($event)" 
+></app-menor>
+
+
+<div class="container">
+  <h1 class="bg-dark text-white">@Input and @Output to exchenge data across components</h1>
+
+
+
+<div class="media">
+
+  <div class="media-left">
+    <!-- attention src is a property thats why the brackets [ ]
+         [property] = "data" and the data lies in the ts file mayor-component here urlImage
+         otherwise src = "localfile.jpeg"
+    -->
+    <img alt="Mitocode" [src]="urlImage" width="150" height="150">
+  </div>
+
+
+  <div class="media-body">
+
+    <h4 class="media-heading">Description</h4>
+    you learn Angular 7
+  
+  <br>
+  <br>
+    <hr>
+    
+    
+    <h2 class="bg-dark text-white">get the data from "app-component" <br>
+      and show this in the mayor-component 
+    </h2>
+    <br>
+    <button class="btn btn-dark mb-2" (click)="countElemtsFromDatabase()">get data </button>
+    <br>
+    {{readDataFromAppComponent}}
+    <br>
+    <br>
+
+    <p>Input a name:</p>
+    <input type="text" [(ngModel)] = "nombre1"  (keyup.enter)="subscribe()"  > 
+    <br><br>
+
+
+
+    <ul>
+      <li *ngFor="let subscriptor of suscriptores ;index as i" >
+          {{i +1 }} - {{subscriptor.nombreCompleto}} 
+          id = {{subscriptor.id}}
+
+
+
+         <!-- <a (click)="unsubscribe(subscriptor.id)"  style="color: blue;">descuscribirse</a>   -->       
+          <a (click)="unsubscribe(subscriptor.id)" class="btn btn-danger">Delete</a>
+
+          <!-- [ngClass] to use CSS dynamical 
+               impar = .immpar in the css file mayor.component.css
+               par = .par in the css file mayor.component.css
+          -->
+
+         <!-- <div ngSwitch="{{subscriptor.id%2}}">
+              <div *ngSwitchCase="'0'" [ngClass]="'impar'">Par</div>
+              <div *ngSwitchCase="'1'" [ngClass]="'par'">Impar</div>
+          </div>
+
+          -->
+
+      </li>
+    </ul>
+
+    <br>
+    
+    <div class="form-group">
+      <button class="btn btn-primary mb-2" (click)="subscribe()">{{lblBtnSubscribe}}</button>
+      <button class="btn btn-danger mb-2" (click)="unsubscribe()">{{lblBtnUnsubscribe}}</button>
+    </div>
+
+  </div>
+ 
+</div>
+
+</div>

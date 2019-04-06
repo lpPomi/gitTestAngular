@@ -1,0 +1,108 @@
+<div class="container">
+
+  <h1 class="bg-dark text-white">Components and Bindings</h1>
+
+
+
+
+  <!-- One way binding -->
+  <div class="container">
+    <p class="bg-dark text-white">One way binding <br>
+      Value defined in component (mi-componente.componente.ts)
+      to this file
+    </p>
+
+    <p>
+      Nombre = {{nombre}}
+    </p>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    capture the event with (keyup) = "saludar($event)" in the console <br>
+    to simulate two way binding without [(ngModel)] <br>
+
+    <input type="text" (keyup)="saludar($event)"> <br>
+
+    <div class="row">
+      Content : <p class="text-danger">{{content_from_input}}</p>
+    </div>
+
+
+  </div>
+
+  <br><br>
+
+
+  <!-- Two way binding  with [(ngModel)] 
+
+   but declare ngModel in the file app.module.ts 
+
+  import { FormsModule } from '@angular/forms';
+  and in the imports
+ 
+  imports: [
+  BrowserModule,
+  AppRoutingModule,
+  FormsModule 
+ ],  
+
+-->
+
+  <div class="container">
+
+    <p class="bg-dark text-white">Two way binding <br>
+
+      with [(ngModel)]
+    </p>
+
+    capture the value in the console <br>
+    <input type="text" [(ngModel)]="apellidos"> <br>
+
+    <div class="row">
+      Content : <p class="text-danger">{{apellidos}}</p>
+    </div>
+
+  </div>
+
+
+
+  <br><br>
+
+  <!-- create a dynamical list 
+
+      define an string array  in the file mi-component.component.ts
+      define a input field in the html file
+      the input grow in the list 
+
+-->
+
+  <div class="container">
+
+    <p class="bg-dark text-white">Create dynamical list with array and ngFor</p>
+
+
+    <!-- input "type=text"  >  input new course <  NO !!!
+    <input type="text" [(ngModel)]="apellidos"> <br>    SI !!!
+-->
+
+    capture the value for "cursos" in the console <br>
+    and put it in the string array and show it <br>
+
+    <input type="text" placeholder="new curse" [(ngModel)]="newCurse" /> 
+    
+
+    <button class="btn btn-dark mb-3" (click)="addCurso()">add to list</button>
+
+    <ul>
+      <li *ngFor="let curso of cursos; index as i">
+        {{curso}} 
+      </li>
+    </ul>
+
+    <p *ngIf="show1">{{emptyInput}}</p>
+
+  </div>
+
+</div>
