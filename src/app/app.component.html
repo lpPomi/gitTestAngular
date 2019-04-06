@@ -1,0 +1,52 @@
+<app-mi-componente></app-mi-componente>
+<hr> 
+
+<!--
+<div class="container ">
+      
+      <div class="alert alert-success" *ngIf="showGreen">
+            <strong  class="alert alert-success">{{dataToShowSubscribesEmitter}}</strong>
+      </div> 
+                  
+
+      <div  class="alert alert-danger" *ngIf="showRed">
+            <strong  class="alert alert-danger">{{dataToShowSubscribesEmitter}}</strong>
+      
+      </div>
+      
+</div>
+-->
+      
+<!--  or in this form also -->
+
+
+      <div class="container alert alert-success" *ngIf = "dataToShowSubscribesEmitter === 'subscribe';else apodo1">
+            <strong>{{dataToShowSubscribesEmitter}}</strong>
+     </div> 
+            
+
+     <ng-template #apodo1>
+            <div class="container alert alert-danger" *ngIf = "dataToShowSubscribesEmitter != null">
+                  <strong>{{dataToShowSubscribesEmitter}}</strong>
+            </div>
+     </ng-template>
+
+
+<!-- send data from this component to the component mayor 
+      [ property] = "data"
+      [ name in the parent ] = "name in the child" 
+      in the mayor-component is an @Input() defined
+      
+      and 
+
+      get data from the mayor-component with an emitter (emisor)="method($event)"
+      in the mayor component @Output
+-->
+
+
+<app-mayor 
+      [dataFromAppComponent]="dataInAppComponent" 
+      [lblBtnSubscribe]="'subscribe'"
+      [lblBtnUnsubscribe]="'unsubscribe'" 
+      (emisor)="getStringFromMayor($event)">
+</app-mayor>
